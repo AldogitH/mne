@@ -30,11 +30,19 @@
         ref="button"
         @click="showOverlay($event)"
         class="open-btn border-b-[1px] border-dashed cursor-pointer hover:text-seagull-400"
-        >watermark
-        <UIcon name="i-lucide-focus" class="text-chenin-400 w-5 h-5"></UIcon></a
-      >.
+        >watermark. <UIcon name="i-lucide-focus" class="text-chenin-400 w-5 h-5"></UIcon
+      ></a>
     </p>
-
+    <!-- <UButton
+      label="Open Overlay Focus"
+      ref="button"
+      @click="showOverlay"
+      class="open-btn cursor-pointer text-base p-5"
+      icon="i-heroicons-pencil-square"
+      size="sm"
+      color="primary"
+      variant="soft"
+    /> -->
     <FullScreenOverlay
       :visible.sync="isOverlayVisible"
       :buttonRect="buttonRect"
@@ -53,6 +61,7 @@ const buttonRect = ref({});
 
 const showOverlay = async (event) => {
   const button = event.target;
+  //const button = document.querySelector(".open-btn");
   buttonRect.value = button.getBoundingClientRect();
   await nextTick();
   isOverlayVisible.value = true;

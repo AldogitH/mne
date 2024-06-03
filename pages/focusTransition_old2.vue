@@ -3,10 +3,7 @@
     <h1>Much More Than Screening</h1>
 
     <h3>PLAY</h3>
-    <p>
-      Touch Day and Bin, and your is
-      <UChip color="seagull">ready</UChip> to watch.
-    </p>
+    <p>Touch Day and Bin, and your is to watch.</p>
 
     <h3>MEET</h3>
     <p>
@@ -15,11 +12,7 @@
         ref="button"
         @click="showOverlay($event)"
         class="open-btn underline cursor-pointer text-seagull-400"
-        >NLEs
-        <UIcon
-          name="i-mdi-focus-field-horizontal"
-          class="text-chenin-400 w-5 h-5"
-        ></UIcon></a
+        >NLEs</a
       >, stay up to date.
     </p>
 
@@ -30,11 +23,9 @@
         ref="button"
         @click="showOverlay($event)"
         class="open-btn border-b-[1px] border-dashed cursor-pointer hover:text-seagull-400"
-        >watermark
-        <UIcon name="i-lucide-focus" class="text-chenin-400 w-5 h-5"></UIcon></a
-      >.
+        >watermark.</a
+      >
     </p>
-
     <FullScreenOverlay
       :visible.sync="isOverlayVisible"
       :buttonRect="buttonRect"
@@ -53,6 +44,7 @@ const buttonRect = ref({});
 
 const showOverlay = async (event) => {
   const button = event.target;
+  //const button = document.querySelector(".open-btn");
   buttonRect.value = button.getBoundingClientRect();
   await nextTick();
   isOverlayVisible.value = true;

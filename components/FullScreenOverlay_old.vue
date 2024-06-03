@@ -12,12 +12,6 @@
     </button>
     <Focus1Txt />
     <slot></slot>
-    <svg width="100%" height="100%" viewBox="-20 0 557 190" id="svg">
-      <path
-        id="path"
-        d="M9,100c0,0,18.53-41.58,49.91-65.11c30-22.5,65.81-24.88,77.39-24.88c33.87,0,57.55,11.71,77.05,28.47c23.09,19.85,40.33,46.79,61.71,69.77c24.09,25.89,53.44,46.75,102.37,46.75c22.23,0,40.62-2.83,55.84-7.43c27.97-8.45,44.21-22.88,54.78-36.7c14.35-18.75,16.43-36.37,16.43-36.37"
-      />
-    </svg>
   </div>
 </template>
 
@@ -27,9 +21,6 @@
 
 import { ref, watch, onMounted } from "vue";
 import gsap from "gsap";
-import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-gsap.registerPlugin(MotionPathPlugin);
-
 import { _flex } from "#tailwind-config/theme";
 
 const props = defineProps({
@@ -82,15 +73,9 @@ const openOverlay = () => {
       clipPath: `circle(${radius}px at ${window.innerWidth / 2}px ${
         window.innerHeight / 2
       }px)`,
-      duration: 2,
+      duration: 1,
       // ease: "power2.inOut",
       ease: "power2.out",
-      motionPath: {
-        path: spiralPath,
-        //align: "#path",
-        autoRotate: true,
-        alignOrigin: [0.5, 0.5],
-      },
     }
   );
 };
@@ -128,10 +113,4 @@ function generateSpiralPath(cx, cy) {
 }
 </script>
 
-<style scoped>
-path {
-  stroke-width: 2;
-  stroke: gray;
-  fill: transparent;
-}
-</style>
+<style></style>

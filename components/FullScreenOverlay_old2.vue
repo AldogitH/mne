@@ -1,9 +1,13 @@
 <template>
   <div
+    v-if="isClient"
     ref="overlay"
     class="overlay fixed top-0 left-0 w-full h-full p-[8%] bg-black/80 z-[1000] overflow-scroll"
     v-show="visible"
   >
+    <svg ref="svg" :width="svgWidth" :height="svgHeight" class="absolute top-0 left-0">
+      <path ref="spiralPath" fill="none" stroke="white" />
+    </svg>
     <button
       @click="closeOverlay"
       class="close-btn fixed top-[5%] right-[5%] bg-transparent text-4xl text-slate-200 hover:text-slate-400"
@@ -12,12 +16,6 @@
     </button>
     <Focus1Txt />
     <slot></slot>
-    <svg width="100%" height="100%" viewBox="-20 0 557 190" id="svg">
-      <path
-        id="path"
-        d="M9,100c0,0,18.53-41.58,49.91-65.11c30-22.5,65.81-24.88,77.39-24.88c33.87,0,57.55,11.71,77.05,28.47c23.09,19.85,40.33,46.79,61.71,69.77c24.09,25.89,53.44,46.75,102.37,46.75c22.23,0,40.62-2.83,55.84-7.43c27.97-8.45,44.21-22.88,54.78-36.7c14.35-18.75,16.43-36.37,16.43-36.37"
-      />
-    </svg>
   </div>
 </template>
 
@@ -25,11 +23,8 @@
 //defineEmits is a compiler macro and no longer needs to be imported.
 // import { ref, watch, onMounted, defineEmits } from "vue";
 
-import { ref, watch, onMounted } from "vue";
+import { ref, watch, nextTick, onMounted } from "vue";
 import gsap from "gsap";
-import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-gsap.registerPlugin(MotionPathPlugin);
-
 import { _flex } from "#tailwind-config/theme";
 
 const props = defineProps({
@@ -40,6 +35,15 @@ const props = defineProps({
 const emits = defineEmits(["update:visible"]);
 
 const overlay = ref(null);
+const svg = ref(null);
+const spiralPath = ref(null);
+
+const svgWidth = ref(0);
+const svgHeight = ref(0);
+const isClient = ref(false);
+
+const numPoints = 100;
+let maxRadius = 0;
 
 watch(
   () => props.visible,
@@ -50,7 +54,8 @@ watch(
   }
 );
 
-const openOverlay = () => {
+const openOverlay = async () => {
+  if (!isClient.value) return;
   const { width, height, left, top } = props.buttonRect;
   // const radius = Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2) / 2; // raggio calcolato dal centro dello schermo con il teorema di pitagora
 
@@ -68,34 +73,33 @@ const openOverlay = () => {
   //dichiaro la costante che racchiude i valori calcolati e ne restituisce il più grande che è quello che userò come raggio per il mio clipPath
   const radius = Math.max(distanceTL, distanceTR, distanceBL, distanceBR);
 
-  //!SECTION
   // Generate spiral path
   const spiralPath = generateSpiralPath(centerX, centerY);
-  //
-  gsap.fromTo(
-    overlay.value,
-    {
-      // clipPath: `circle(${width / 2}px at ${left + width / 2}px ${top + height / 2}px)`,
-      clipPath: `circle(${width / 10}px at ${left + width / 2}px ${top + height / 2}px)`,
-    },
-    {
-      clipPath: `circle(${radius}px at ${window.innerWidth / 2}px ${
-        window.innerHeight / 2
-      }px)`,
+
+  await nextTick();
+  if (spiralPath.value) {
+    spiralPath.value.setAttribute("d", pathString);
+    spiralPath.value.style.strokeWidth = 0; // Initially hide the path
+
+    gsap.to(spiralPath.value, {
+      strokeWidth: 5, // Adjust as needed
       duration: 2,
-      // ease: "power2.inOut",
       ease: "power2.out",
-      motionPath: {
-        path: spiralPath,
-        //align: "#path",
-        autoRotate: true,
-        alignOrigin: [0.5, 0.5],
+      onComplete: () => {
+        gsap.to(overlay.value, {
+          clipPath: `circle(${maxRadius}px at ${window.innerWidth / 2}px ${
+            window.innerHeight / 2
+          }px)`,
+          duration: 1,
+          ease: "power2.out",
+        });
       },
-    }
-  );
+    });
+  }
 };
 
 const closeOverlay = () => {
+  if (!isClient.value) return;
   const { width, height, left, top } = props.buttonRect;
   // const centerX = left + width / 2;
   // const centerY = top + height / 2;
@@ -115,23 +119,23 @@ const closeOverlay = () => {
 
 // Function to generate spiral path
 function generateSpiralPath(cx, cy) {
-  const numPoints = 100;
-  const maxRadius = Math.max(window.innerWidth, window.innerHeight);
-  const pathPoints = [];
+  let pathString = `M${cx},${cy}`;
   for (let i = 0; i < numPoints; i++) {
     const angle = 0.1 * i;
     const x = cx + ((1 + angle) * Math.cos(angle) * maxRadius) / numPoints;
     const y = cy + ((1 + angle) * Math.sin(angle) * maxRadius) / numPoints;
-    pathPoints.push(`circle(${(i / numPoints) * maxRadius}px at ${x}px ${y}px)`);
+    pathString += ` L${x},${y}`;
   }
-  return pathPoints;
+  return pathString;
 }
+
+onMounted(() => {
+  isClient.value = true;
+  // Ensure SVG dimensions are set correctly
+  svgWidth.value = window.innerWidth;
+  svgHeight.value = window.innerHeight;
+  maxRadius = Math.max(svgWidth.value, svgHeight.value) * 1.5;
+});
 </script>
 
-<style scoped>
-path {
-  stroke-width: 2;
-  stroke: gray;
-  fill: transparent;
-}
-</style>
+<style></style>
