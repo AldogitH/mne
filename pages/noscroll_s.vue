@@ -213,7 +213,7 @@ onMounted(async () => {
           $gsap.to(section, { opacity: 0, zIndex: "0", duration: 0.5 });
           //$gsap.set(".ghirlanda-updx, .ghirlanda-dwsx", { autoAlpha: 0.6 });
           if (index === 1) {
-            //scrollTrigger.disable();
+            scrollTrigger.disable();
           }
           if (index === 2) {
             PhasesRef.value.rotationTL.pause();
