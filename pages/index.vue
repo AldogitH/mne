@@ -7,7 +7,7 @@
           <div id="hero-content" class="content">
             <div id="heroTitle" class="flex items-center justify-center flex-wrap">
               <!-- <ChevronScroll></ChevronScroll> -->
-              <canvas ref="canvasRef" id="canvas" width="500" height="500"></canvas>
+              <canvas ref="canvasRef" id="canvas" width="300" height="300"></canvas>
               <div class="overflowMask overflow-hidden">
                 <h1 id="H-screen" class="uppercase">Screen</h1>
               </div>
@@ -56,13 +56,15 @@ onMounted(() => {
 
   nextTick(() => {
     const r = new Rive({
-      //src: "/assets/riv/provariv.riv",
-      src: "https://cdn.rive.app/animations/vehicles.riv",
+      //src: "/assets/rive/provariv.riv",
+      src: "/assets/rive/hero_mnemonica2.riv",
+      //src: "https://cdn.rive.app/animations/vehicles.riv",
       //canvas: document.querySelectorAll("#canvas"),
       canvas: canvasRef.value,
       autoplay: true,
       // stateMachines: "State Machine 1",
-      stateMachines: "bumpy",
+      //stateMachines: "bumpy",
+      stateMachines: "State Hero",
       onLoad: () => {
         r.resizeDrawingSurfaceToCanvas();
       },
