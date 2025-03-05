@@ -66,6 +66,10 @@ const { data: doc } = await useAsyncData(() =>
   queryCollection("content").path("/screen-deliver-preserve").first()
 );
 
+console.log("Content : ", doc);
+const screen = doc?.body?.children?.find((section) => section.type === "screen");
+console.log("Screen : ", screen);
+
 // mipreparo le istanze dei modali
 const isModalOpen1 = ref(false);
 const isModalOpen2 = ref(false);
