@@ -1,37 +1,43 @@
 ---
-title: Screen-h
-description: streaming and discussion
-title2: Deliver-h
-deliver-description: data transfer
-preserve-title: Preserve-h
-preserve-description: perennial availability
+title: mnemonica modules section
+description: mnemonica modules used in production and archive
 ---
 
-::callout
-Using MDC & Vue components is addictive.
-
-no no
-
-#title
-Please be careful!
-
-#screen description
-Descrizione di screen
-
-#Screen title
-screen title
-::
-
-::prova
-no
-
-#title
-Ciao questo è un titolo prova
-
-#description
-Ciao questa è una descrizione prova
-
-e questo è un semplice defoult prova
-::
-
+::screen
 ---
+modulo: screen
+---
+
+#title 
+Screen
+
+#description 
+streaming and discussion
+
+::
+
+::deliver
+---
+modulo: deliver
+---
+
+#title 
+Deliver
+
+#description 
+data transfer
+
+::
+
+::preserve
+---
+modulo: preserve
+---
+
+#title 
+Preserve
+
+#description 
+perennial availability
+
+::
