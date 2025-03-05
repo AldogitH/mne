@@ -68,6 +68,7 @@ import {
 } from "vue";
 import { useWindowSize } from "@vueuse/core";
 import { BtnCloseBTN } from "#components";
+
 const { $gsap } = useNuxtApp();
 
 const props = defineProps({
