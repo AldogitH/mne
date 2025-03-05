@@ -22,44 +22,12 @@ Descrizione di screen
 screen title
 ::
 
-::callout
----
-chiave: valore
----
-Using MDC & vue vue vue components is addictive.
-
-no no
-
-#title
-Please be careful!
-
-#screen description
-Descrizione di screen
-
-#Screen title
-screen title
-::
-
 ::prova
-
-#title 
+#title
 Ciao questo è un titolo prova
 
-#description 
+#description
 Ciao questa è una descrizione prova
 
 e questo è un semplice defoult prova
-
-::
-
-::callout
-
-#title 
-Ciao questo è un titolo prova
-
-#description 
-Ciao questa è una descrizione prova
-
-e questo è un semplice defoult prova
-
 ::
