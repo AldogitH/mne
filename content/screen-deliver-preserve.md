@@ -7,37 +7,31 @@ description: mnemonica modules used in production and archive
 ---
 modulo: screen
 ---
-
-#title 
+#title
 Screen
 
-#description 
+#description
 streaming and discussion
-
 ::
 
 ::deliver
 ---
 modulo: deliver
 ---
-
-#title 
+#title
 Deliver
 
-#description 
+#description
 data transfer
-
 ::
 
 ::preserve
 ---
 modulo: preserve
 ---
-
-#title 
+#title
 Preserve
 
-#description 
+#description
 perennial availability
-
 ::
