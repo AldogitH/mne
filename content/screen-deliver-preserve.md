@@ -40,12 +40,26 @@ Descrizione di screen
 screen title
 ::
 
-\::prova sezione
+::prova
 
-\#title Ciao questo è un titolo prova
+#title 
+Ciao questo è un titolo prova
 
-\#description Ciao questa è una descrizione prova
+#description 
+Ciao questa è una descrizione prova
 
 e questo è un semplice defoult prova
 
-\::
+::
+
+::callout
+
+#title 
+Ciao questo è un titolo prova
+
+#description 
+Ciao questa è una descrizione prova
+
+e questo è un semplice defoult prova
+
+::
