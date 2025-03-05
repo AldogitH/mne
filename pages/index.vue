@@ -1,90 +1,460 @@
 <template>
-  <div class="max-w-[1700px] m-auto px-16">
-    <!-- <div class="box w-8 h-8 rounded bg-lime-600"></div>
-    <div class="box2 w-8 h-8 rounded bg-orange-600"></div>
-    <div class="box3 w-8 h-8 rounded bg-violet-600"></div> -->
-    <!-- <ContentDoc class="sm:text-orange-500 md:text-slate-600 lg:text-lime-500" /> -->
-    <article>
-      <h1 class="text-seagull-400 dark:text-orange-400">Home Page</h1>
-      <button @click="show = !show">Toggle</button>
-      <ClientOnly>
-        <!-- il wrap ClientOnly serve per permettere il funzionamento di appar della Transition  -->
-        <Transition appear>
-          <p v-if="show" class="text-base font-thin">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a nisl
-            tincidunt, ullamcorper ipsum sit amet, efficitur diam. Nullam rutrum mauris
-            eget pretium porta. Class aptent taciti sociosqu ad litora torquent per
-            conubia nostra, per inceptos himenaeos. Suspendisse quis blandit sem, nec
-            semper sapien. Donec finibus sem at risus convallis, id tristique purus
-            mattis. Integer iaculis eros nulla, in condimentum turpis volutpat sed.
-            Phasellus id euismod lorem, vel lacinia erat. Curabitur finibus dolor non
-            mauris aliquam vestibulum. Suspendisse in blandit dolor, eget rutrum libero.
-            Curabitur congue quam iaculis, mollis felis eu, viverra erat. Vivamus
-            pellentesque at ex ut egestas. <br /><br />Etiam quis pretium nisi, ac
-            pulvinar tellus. Pellentesque habitant morbi tristique senectus et netus et
-            malesuada fames ac turpis egestas. Donec sit amet luctus neque. Sed mattis sem
-            at rutrum tristique. Cras eget tristique arcu. Vestibulum mollis eros urna, et
-            dictum tortor viverra ac. Nam vitae dapibus purus, quis semper mauris.
-            Vestibulum non elementum neque. Integer urna est, congue in malesuada in,
-            vestibulum vel augue. Vestibulum id velit enim. Donec libero nisi, dapibus sed
-            urna quis, tempus imperdiet turpis. Fusce dictum erat sed justo malesuada, sed
-            pretium metus varius. <br /><br />Donec efficitur, ex molestie finibus
-            ullamcorper, nisl nisl rutrum magna, eget ultrices metus nisl non metus.
-            Vestibulum in porta dui. Vestibulum nulla leo, ornare eget est sit amet,
-            cursus pharetra quam. Sed ac pulvinar ex, quis ultricies leo. Morbi egestas
-            pretium finibus. Donec pharetra vitae magna quis auctor. Cras rhoncus ac est
-            quis semper. Cras faucibus a ex a tincidunt. Etiam sit amet mi quis eros
-            feugiat iaculis. In tincidunt enim eget felis pretium tempor. Cras interdum
-            quam ac purus aliquam fermentum. Ut sit amet auctor libero. Donec finibus,
-            diam a rutrum interdum, lacus quam fringilla purus, sed ultrices augue risus
-            quis arcu. In vel nisl sit amet sapien faucibus porta sit amet et tortor.
-            <br /><br />Donec ut odio nec ex porttitor sollicitudin lobortis eu nisl.
-            Phasellus pulvinar fringilla bibendum. Etiam facilisis turpis et ligula
-            laoreet, sit amet fermentum eros faucibus. Mauris at laoreet metus, luctus
-            laoreet enim. Curabitur sagittis, justo nec ullamcorper tempus, enim diam
-            luctus est, a dapibus metus sem a neque. Nullam nulla metus, scelerisque sit
-            amet lacus sed, dapibus iaculis enim. Curabitur a eleifend mi. Quisque
-            pellentesque, elit eu sodales fermentum, augue orci ultricies ante, eu
-            faucibus nisl diam sit amet est. Proin eget massa ut tortor porta laoreet.
-            Nullam lacinia tempus elementum.
-          </p>
-        </Transition>
-      </ClientOnly>
-    </article>
-  </div>
+  <main>
+    <div id="sectionsWrapper" class="z-20">
+      <div id="hero-section" class="section_fixed hero">
+        <div id="ghirlanda-element" class="element"></div>
+        <canvas
+          ref="canvasRefLogo"
+          id="canvasLogo"
+          style="position: absolute; height: 100px; z-index: 5"
+        ></canvas>
+        <canvas
+          ref="canvasRef"
+          id="canvas"
+          style="
+            margin-top: 80px;
+            position: absolute;
+            width: 100%;
+            max-width: 960px;
+            height: 50vh;
+            z-index: 5;
+          "
+        ></canvas>
+        <div id="hero-content-wrapper" class="wrapper">
+          <div id="hero-content" class="content">
+            <!-- <div id="heroTitle" class="flex items-center justify-center flex-wrap">
+            </div> -->
+            <div class="headline">
+              <h2 id="heroSubTitle" class="hidden min-[680px]:block text-center">
+                Let your media assets flourish and last in the digital cinema ecosystem
+              </h2>
+              <h2 id="heroSubTitle" class="text-center min-[680px]:hidden">
+                Let your media assets flourish<br />
+                and last in the digital cinema ecosystem
+              </h2>
+              <h2>{{ doc.title }}</h2>
+              <h3>{{ doc.description }}</h3>
+              <ContentRenderer :value="doc" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="phases-section" class="section_fixed phases">
+        <PhasesComp ref="PhasesRef"></PhasesComp>
+      </div>
+      <div id="modules-section" class="section_fixed modules">
+        <ModulesComp></ModulesComp>
+      </div>
+    </div>
+    <div class="nofixed_section w-[100vw] h-[1600px] z-30">
+      <div class="preMade"></div>
+      <div id="made-for" class="max-w-[1200px]">
+        <h2>Made For</h2>
+      </div>
+    </div>
+  </main>
 </template>
 
 <script setup>
-const show = ref(true);
-// console.groupCollapsed("Site Credits");
-// console.log("ciao");
-// console.log("test");
-
-//Utilizzo di Gsap
-// import { onMounted } from "vue";
-// import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-// const tl = gsap.timeline({ defaults: { duration: 1, ease: "back" } });
-
-// onMounted(() => {
-//   tl.to(".box2", { rotation: -270 }).to(".box3", { rotation: 360 }).to(".box", {
-//     duration: 3,
-//     rotation: 360,
-//     scale: 2,
-//     repeat: -1,
-//     yoyo: true,
-//   });
+// const { data: post } = await useAsyncData("post", async () => {
+//   queryContent("test-contenuti").findOne();
 // });
-//fine - Utilizzo di Gsap
+const { data: doc } = await useAsyncData(() =>
+  queryCollection("content").path("/test-contenuti").first()
+);
+import { onMounted, onBeforeUnmount, ref, nextTick } from "vue";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Rive, Fit, Alignment, Layout } from "@rive-app/canvas";
+
+const PhasesRef = ref(null);
+const canvasRef = ref(null);
+const canvasRefLogo = ref(null);
+const canvasRefBtn = ref(null);
+
+// Variabile per memorizzare il buffer del file .riv
+let rivBuffer = null;
+
+// Funzione per caricare il file .riv una sola volta
+async function loadRivFile(url) {
+  const response = await fetch(url);
+  return await response.arrayBuffer();
+}
+
+onMounted(() => {
+  const { $gsap } = useNuxtApp();
+
+  nextTick(async () => {
+    //SECTION - RIVE
+    // Carica il file .riv una sola volta
+    rivBuffer = await loadRivFile("/assets/rive/hero_mne_divided.riv");
+
+    const rLogo = new Rive({
+      buffer: rivBuffer, // Utilizza il buffer già caricato
+      artboard: "Logo",
+      canvas: canvasRefLogo.value,
+      autoplay: true,
+      //stateMachines: "State logo",
+      animations: "Logo intro",
+      layout: new Layout({
+        fit: Fit.Layout, // Adatta senza distorsione
+        alignment: Alignment.Center, // Centra l'animazione
+        resizeMode: "auto",
+      }),
+      onLoad: () => {
+        rLogo.resizeDrawingSurfaceToCanvas();
+        rLogo.pause(); // metto in pausa l'istanza rLogo dopo averla inizializzata in modo da poterla riprendere in seguito e fare rLogo.play("timelineName")
+      },
+    });
+
+    const rTitle = new Rive({
+      buffer: rivBuffer,
+      artboard: "Title",
+      canvas: canvasRef.value,
+      autoplay: true,
+      stateMachines: "State Title",
+      layout: new Layout({
+        fit: Fit.Layout, // Adatta senza distorsione
+        alignment: Alignment.Center, // Centra l'animazione
+        resizeMode: "auto",
+      }),
+      onLoad: () => {
+        rTitle.resizeDrawingSurfaceToCanvas();
+      },
+    });
+
+    function aggiornaResize(elemento) {
+      // Aggiorna gli attributi width e height del canvas in base alle dimensioni attuali
+      // canvasRef.value.width = canvasRef.value.offsetWidth;
+      // canvasRef.value.height = canvasRef.value.offsetHeight;
+
+      elemento.layout = new Layout({
+        fit: Fit.Layout, // Cambia il fit per coprire l'area
+        alignment: Alignment.Center, // Allinea in basso
+        resizeMode: "auto",
+      });
+      elemento.resizeDrawingSurfaceToCanvas();
+    }
+
+    window.addEventListener("resize", () => {
+      [rTitle, rLogo].forEach(aggiornaResize);
+    });
+
+    //!SECTION
+
+    $gsap.set("#hero-section", { opacity: 1, zIndex: 1 });
+    $gsap.set(".ghirlanda-updx, .ghirlanda-dwsx ", { opacity: 0 });
+
+    // Variabile che indica se l'animazione intro è completata
+    let introCompleted = false;
+    let isfixedSection = true;
+
+    //SECTION - animazioni interne
+    // implemento la timeline intro che sbloccherà alla fine l'overflow hidden del body per ripristinare lo scroll
+    const intro = $gsap.timeline({
+      onStart: () => {
+        console.log("Intro Partita");
+        //rLogo.play("Logo intro"); //Logo intro è il nome della timeline impostata in Rive
+      },
+      onComplete: () => {
+        introCompleted = true;
+        console.log("Intro completata");
+        //rLogo.play("Logo intro"); //Logo intro è il nome della timeline impostata in Rive
+      },
+    });
+    // registro effetto per l'entrata delle scritte e del logo in Hero section
+    $gsap.registerEffect({
+      name: "EnterFrom",
+      effect: (targets, config) => {
+        return $gsap.from(targets, {
+          autoAlpha: 0,
+          duration: config.duration,
+          y: config.y,
+          ease: config.ease,
+        });
+      },
+      defaults: {
+        ease: "back.out",
+        y: "100",
+      },
+      extendTimeline: true,
+    });
+
+    intro.call(
+      () => {
+        rLogo.play("Logo intro");
+      },
+      null,
+      1
+    );
+
+    intro.from("#ghirlanda-element_start", {
+      autoAlpha: 0,
+      rotate: 5,
+      filter: "blur(5px)",
+      duration: 1.5,
+      scale: 0.9,
+      force3D: true,
+      ease: "power2.inOut",
+    });
+    intro.EnterFrom("#logo_mne", { duration: 2, y: "0" });
+    intro.EnterFrom("#H-screen", { duration: 0.7 }, "<");
+    intro.EnterFrom("#H-deliver", { duration: 0.7 }, "> -=0.3");
+    intro.EnterFrom("#H-preserve", { duration: 0.7 }, "> -=0.3");
+    intro.EnterFrom("#heroSubTitle", { duration: 0.5, y: "-25px" }, "-=0.7");
+
+    //!SECTION
+
+    //SECTION - Gestione animazione Timeline allo scroll
+
+    // array di tutte le sezioni
+    const sections = document.querySelectorAll(".section_fixed");
+    if (!sections.length) {
+      console.error("Nessuna sezione trovata.");
+      return;
+    }
+
+    let isCoolingDown = false;
+    const COOL_DOWN_TIME = 1600; // ms
+
+    // Variabili per tracciare il tocco
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    function handleScroll(event) {
+      if (!isfixedSection) return;
+      // Se la timeline intro non è ancora terminata, ignoro completamente lo scroll
+      if (!introCompleted) {
+        event.preventDefault();
+        return;
+      }
+      // Se siamo in fase di "cooldown", ignoriamo tutti gli eventi successivi
+      if (isCoolingDown) return;
+
+      let deltaY = 0;
+      //SECTION - ottimizazione touch mobile
+      // Determina il tipo di evento
+      if (event.type === "wheel") {
+        deltaY = event.deltaY;
+      } else if (event.type === "pointerdown") {
+        touchStartY = event.clientY;
+      } else if (event.type === "pointermove") {
+        touchEndY = event.clientY;
+      } else if (event.type === "pointerup") {
+        deltaY = touchStartY - touchEndY;
+      }
+
+      // Soglia minima per evitare input accidentali su mobile
+      // if (Math.abs(deltaY) > 30) {
+      //   if (deltaY > 0) {
+      //     sectionsTL.play(); // Scroll down
+      //   } else {
+      //     sectionsTL.reverse(); // Scroll up
+      //   }
+      // }
+      //!SECTION
+
+      if (event.deltaY > 0) {
+        //nextStep();
+        sectionsTL.play();
+      } else if (event.deltaY < 0) {
+        //prevStep();
+        sectionsTL.reverse();
+      }
+
+      // Attiviamo la "finestra" di cooldown
+      isCoolingDown = true;
+      setTimeout(() => {
+        isCoolingDown = false;
+      }, COOL_DOWN_TIME);
+    }
+
+    window.addEventListener("wheel", handleScroll, { passive: false });
+    //window.addEventListener("touchmove", handleScroll, { passive: false });
+    window.addEventListener("pointerdown", handleScroll, { passive: false });
+    window.addEventListener("pointermove", handleScroll, { passive: false });
+    window.addEventListener("pointerup", handleScroll, { passive: false });
+
+    //NOTE - recupero la rotationTL esposta dal componente phases_comp
+    const RotationTL = PhasesRef.value.rotationTL;
+
+    //NOTE - recupero la phasesTL esposta dal componente phases_comp
+    const PhasesTL = PhasesRef.value.phasesTL;
+
+    $gsap.set("#hero-section", { zIndex: 1 });
+    $gsap.set("#modules-section", { zIndex: 0 });
+    $gsap.set("#phases-section", { zIndex: 0 });
+    //$gsap.set("#pre-chips-container .title", { autoAlpha: 0 });
+    $gsap.set("#post-chips-container .title", { opacity: 0, y: -10 });
+    $gsap.set("#production-chips-container .title", { opacity: 0, y: -10 });
+    $gsap.set("#market-chips-container .title", { opacity: 0, y: -10 });
+    $gsap.set("#post-chips-container .chipsContainer", { opacity: 0, y: 10 });
+    $gsap.set("#production-chips-container .chipsContainer", { opacity: 0, y: 10 });
+    $gsap.set("#market-chips-container .chipsContainer", { opacity: 0, y: 10 });
+
+    const sectionsTL = $gsap.timeline({
+      paused: true,
+      defaults: {
+        ease: "power2.out",
+      },
+      onComplete: () => {
+        setTimeout(() => {
+          $gsap.set("body", { overflow: "auto" });
+          // Simula un piccolo scroll per attivare ScrollTrigger
+          window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+        }, 100);
+      },
+      onReverseCompleted: () => {},
+    });
+
+    //ANCHOR - Hero Section Start
+    sectionsTL.call(
+      () => {
+        rLogo.play("Logo intro");
+      },
+      null,
+      "-=1"
+    );
+    sectionsTL.to("#hero-section", {
+      autoAlpha: 0,
+      duration: 1,
+      zIndex: 0,
+    });
+    sectionsTL.to(
+      "#ghirlanda-element_start",
+      {
+        opacity: 0,
+        zIndex: "0",
+        duration: 0.5,
+      },
+      "<"
+    );
+    //ANCHOR - Hero end
+
+    //ANCHOR - Phases Section Start
+    // sectionsTL.call(() => PhasesRef.value.rotationTL.pause());
+    sectionsTL.call(() => RotationTL.pause());
+
+    sectionsTL.to("#modules_svg", { rotate: "+=60", ease: "power1.in" });
+    //sectionsTL.call(() => PhasesRef.value.rotationTL.play(), [], "<+=0.2");
+    sectionsTL.call(() => RotationTL.play(), [], "<+=0.2");
+    sectionsTL.to(
+      "#hero-section",
+      {
+        autoAlpha: 0,
+        duration: 0.5,
+        zIndex: 0,
+      },
+      "<"
+    );
+    sectionsTL.to(
+      "#phases-section",
+      {
+        autoAlpha: 1,
+        duration: 0.8,
+        zIndex: 1,
+      },
+      "<+=0.2"
+    );
+    sectionsTL.to(".ghirlanda-updx, .ghirlanda-dwsx ", {
+      autoAlpha: 0.6,
+      filter: "blur(0px)",
+    });
+
+    sectionsTL.addLabel("phases_section");
+    sectionsTL.addPause();
+
+    //ANCHOR - Phases Section End
+
+    //ANCHOR - Modules Section Start
+    sectionsTL.to("#phases-section", {
+      autoAlpha: 0,
+      duration: 0.5,
+      zIndex: 0,
+    });
+    sectionsTL.to(
+      "#modules-section",
+      {
+        autoAlpha: 1,
+        duration: 0.8,
+        zIndex: 1,
+      },
+      "<"
+    );
+    sectionsTL.call(() => RotationTL.play());
+    sectionsTL.call(() => RotationTL.pause());
+
+    sectionsTL.to(
+      "#modules-section",
+      {
+        autoAlpha: 1,
+        duration: 0.5,
+        zIndex: 1,
+      },
+      "<0.3"
+    );
+    sectionsTL.to("#Modules_4 #Screen path", { fill: "#CEF372" }, "<");
+    sectionsTL.from("#modules_svg", { rotate: "-=60", ease: "power1.out" }, "<");
+    sectionsTL.to("#modules-content #module-txt_1", { opacity: 1, zIndex: 1 }, "<");
+    // sectionsTL.set("#modules-content #module-txt_2", { zIndex: 0 });
+
+    sectionsTL.addLabel("modules_section");
+    // pausa entrata modules
+    sectionsTL.addPause();
+    //-----
+
+    sectionsTL.to("#modules_svg", { rotate: "+=120", ease: "back.out" });
+    sectionsTL.to("#Modules_4 #Screen path", { fill: "#B8EFFA" }, "<");
+    sectionsTL.to("#Modules_4 #Deliver path", { fill: "#CEF372" }, "<");
+    sectionsTL.to("#modules-content #module-txt_1", { opacity: 0, zIndex: 0 }, "<");
+    // sectionsTL.set("#modules-content #module-txt_1", { zIndex: 0 }, "<");
+    sectionsTL.to("#modules-content #module-txt_2", { opacity: 1, zIndex: 1 }, "<");
+    // sectionsTL.set("#modules-content #module-txt_2", { zIndex: 110 }, "<");
+
+    sectionsTL.addPause();
+
+    sectionsTL.to("#modules_svg", { rotate: "+=120", ease: "back.out" });
+    sectionsTL.to("#Modules_4 #Deliver path", { fill: "#B8EFFA" }, "<");
+    sectionsTL.to("#Modules_4 #Preserve path", { fill: "#CEF372" }, "<");
+    sectionsTL.to("#modules-content #module-txt_2", { opacity: 0, zIndex: 0 }, "<");
+    // sectionsTL.to("#modules-content #module-txt_2", { opacity: 0 }, "<");
+    sectionsTL.to("#modules-content #module-txt_3", { opacity: 1, zIndex: 1 }, "<");
+    // sectionsTL.to("#modules-content #module-txt_3", { opacity: 1 }, "<");
+
+    sectionsTL.addPause();
+    //ANCHOR - Modules Section End
+
+    //ANCHOR - nofixed Section Start (modificare in base a quale sarà l'ultima sezione prima del nofixed)
+    sectionsTL.to(
+      "#modules-section",
+      {
+        autoAlpha: 0,
+        duration: 1,
+        zIndex: 0,
+        delay: 0.5,
+      },
+      "<"
+    );
+    //sectionsTL.addPause();
+
+    //ANCHOR - Scrolltrigger per gestire la sezione "nofixed"
+
+    const noFixedST = ScrollTrigger.create({
+      trigger: ".nofixed_section",
+      start: "top bottom",
+      end: "bottom bottom",
+      //markers: true,
+      onEnter: () => {
+        isfixedSection = false;
+      },
+      onLeaveBack: () => {
+        $gsap.set("body", { overflow: "hidden" });
+        isfixedSection = true;
+      },
+    });
+  }); //NOTE - chiusura Next Tick
+});
 </script>
 
-<style scoped>
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 1s;
-}
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
+<style lang="scss">
+//@use "@/assets/css/_globals.scss" as *;
 </style>

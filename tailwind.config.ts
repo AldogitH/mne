@@ -1,10 +1,12 @@
 import type { Config } from 'tailwindcss'
 import { iconsPlugin, getIconCollections } from "@egoist/tailwindcss-icons"
+import typography from '@tailwindcss/typography'
+// import { _textDecorationColor } from '#tailwind-config/theme'
 
 export default <Partial<Config>>{
-  darkMode: 'class',
+  //darkMode: 'class',
     content: [
-      // "./assets/css/**/*.{css,scss}",
+      "./assets/css/**/*.{css,scss}",
       "./components/**/*.{vue,js}",
       "./layouts/**/*.vue",
       "./pages/**/*.vue",
@@ -19,15 +21,35 @@ export default <Partial<Config>>{
       collections: getIconCollections(["mdi", "lucide"]),
       // If you want to use all icons collections: getIconCollections("all"),
     }),
+    typography,
   ],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif'], // Definisco il font Gabarito
+        jost: ['Jost', 'sans-serif'],
+        instrumentSans:['"Instrument Sans"', 'sans-serif'],
+        playfair: ['"Playfair Display"', 'serif'],
+      },
       aspectRatio: {
         auto: 'auto',
         square: '1 / 1',
         video: '16 / 9'
       },
       colors:{
+        'mne_primary':{
+          '50': '#ecfeff',
+          '100': '#cff9fe',
+          '200': '#a5f1fc',
+          '300': '#66e5fa',
+          '400': '#11cbee',
+          '500': '#05b2d5',
+          '600': '#078eb3',
+          '700': '#0d7191',
+          '800': '#145b76',
+          '900': '#164c63',
+          '950': '#083144',
+        },
         'seagull': {
           '50': '#f1fafe',
           '100': '#e3f3fb',
@@ -80,7 +102,7 @@ export default <Partial<Config>>{
           '900': '#3d3d3d',
           '950': '#151515',
         },
-    }
-    }
-  }
+    },
+    },
+  },
 }
