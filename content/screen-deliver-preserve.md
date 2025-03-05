@@ -8,9 +8,14 @@ preserve-description: perennial availability
 ---
 
 ::callout
+Using MDC & Vue components is addictive.
+
 #title
 Please be careful!
-#default
-Using MDC & Vue components is addictive.
-::
 
+#screen description
+Descrizione di screen
+
+#Screen title
+screen title
+::
