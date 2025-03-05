@@ -55,6 +55,22 @@
       "isOrdered": true,
       "folders": {},
       "files": {}
+    },
+    "content": {
+      "name": "content",
+      "isOrdered": true,
+      "folders": {},
+      "files": {
+        "screen-deliver-preserve": 0,
+        "index": 1,
+        "test-contenuti": 2
+      }
+    },
+    "types": {
+      "name": "types",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
     }
   },
   "files": {

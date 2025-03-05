@@ -19,6 +19,7 @@ streaming and discussion
 ---
 modulo: deliver
 ---
+
 #title
 Deliver
 
@@ -28,11 +29,12 @@ data transfer
 
 ::preserve
 ---
+
 modulo: preserve
 ---
+
 #title
 Preserve
-
 #description
 perennial availability
 ::
