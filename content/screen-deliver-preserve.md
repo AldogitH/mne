@@ -5,7 +5,8 @@ description: mnemonica modules used in production and archive
 
 ::screen
 ---
-modulo: screen
+module: modules
+submodule: screen
 ---
 #title
 Screen
