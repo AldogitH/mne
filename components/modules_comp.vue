@@ -10,7 +10,7 @@
         <!-- <h2 class="mTitle">Screening Rooms</h2> -->
         <h2 class="mTitle">Screen</h2>
         <h1>{{ doc.title }}</h1>
-        <h1>{{ doc.title2 }}</h1>
+        <h2>{{ doc.title2 }}</h2>
         <ContentRenderer :value="doc" />
         <h3 class="mSubTitle">streaming and discussion</h3>
         <button

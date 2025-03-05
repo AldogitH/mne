@@ -7,23 +7,10 @@ preserve-title: Preserve-h
 preserve-description: perennial availability
 ---
 
+::callout
+#title
+Please be careful!
+#default
+Using MDC & Vue components is addictive.
+::
 
-Ciao
-
-# test h1
-
-**ciao ciao bold**
-
-ciao ciao bold
-
----
-
-## ciao h2
-
-[ciao h2]{.ciaoh2}
-
-#### ciao h4
-
-![New image](https://placehold.co/600x400?text=New+image)
-
----
