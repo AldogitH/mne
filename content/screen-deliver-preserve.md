@@ -19,3 +19,15 @@ Descrizione di screen
 #Screen title
 screen title
 ::
+
+::prova sezione
+
+#title
+Ciao questo è un titolo prova
+
+#description
+Ciao questa è una descrizione prova
+
+e questo è un semplice defoult prova
+
+::
