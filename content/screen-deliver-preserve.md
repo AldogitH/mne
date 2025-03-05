@@ -9,11 +9,17 @@ preserve-description: perennial availability
 
 Ciao
 
+---
+
 # test h1
 
 **ciao ciao bold**
 
+ciao ciao bold
+
 ## ciao h2
+
+[ciao h2]{.ciaoh2}
 
 #### ciao h4
 
