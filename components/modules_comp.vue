@@ -9,8 +9,7 @@
       <div id="module-txt_1" class="module_card">
         <!-- <h2 class="mTitle">Screening Rooms</h2> -->
         <h2 class="mTitle">Screen</h2>
-        <ContentRenderer :value="doc" />
-        <slot name="Screen"></slot>
+        <h1>{{ doc.name }}</h1>
         <h3 class="mSubTitle">streaming and discussion</h3>
         <button
           @click.passive="openModal1"
@@ -63,13 +62,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 //richiamo i testi dei moduli
 const { data: doc } = await useAsyncData(() =>
-  queryCollection("content").path("/screen-deliver-preserve").first()
+  queryCollection("contentJson").path("/test").first()
 );
-
-console.log("Content : ", doc);
-const screen = doc?.body?.children?.find((section) => section.type === "screen");
-console.log("Screen : ", screen);
-
+console.log(doc);
 // mipreparo le istanze dei modali
 const isModalOpen1 = ref(false);
 const isModalOpen2 = ref(false);

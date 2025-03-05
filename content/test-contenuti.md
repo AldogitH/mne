@@ -1,7 +1,7 @@
 ---
 title: Il mio primo post con Nuxt Studio
-description: Questo è il mio primo post su Nuxt Content
-altro: ciocio
+description: Questo è il mio primo pogst su Nuxt Content
+mino: gino lino pino
 ---
 
 # Ciao a tutti!
