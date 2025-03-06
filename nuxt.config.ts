@@ -46,6 +46,9 @@ export default defineNuxtConfig({
     }
   },
   
+  components:[
+{path: '~/components/content', pathPrefix: false}
+  ],
 
   apollo: {
     clients: {
