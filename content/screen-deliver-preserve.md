@@ -5,7 +5,6 @@ mino: gino lino pino
 ---
 
 ::screen
-
 #title
 Screen
 
@@ -14,7 +13,6 @@ streaming and discussion
 ::
 
 ::deliver
-
 #title
 Deliver
 
@@ -23,7 +21,6 @@ data transfer
 ::
 
 ::preserve
-
 #title
 Preserve
 
