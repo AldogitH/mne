@@ -11,9 +11,6 @@ cino: sellino
 cucco: sepetto
 --------------
 
-::nest
----
-id: 1
----
+::nest {id: 1}
 Titolo
 ::
