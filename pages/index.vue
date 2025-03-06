@@ -44,6 +44,7 @@
         <PhasesComp ref="PhasesRef"></PhasesComp>
       </div>
       <div id="modules-section" class="section_fixed modules">
+        <ContentRenderer :value="prov" />
         <ModulesComp></ModulesComp>
       </div>
     </div>
@@ -63,9 +64,13 @@
 const { data: doc } = await useAsyncData(() =>
   queryCollection("content").path("/test-contenuti").first()
 );
+const { data: prov } = await useAsyncData(() =>
+  queryCollection("content").path("/testiprova").first()
+);
 import { onMounted, onBeforeUnmount, ref, nextTick } from "vue";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Rive, Fit, Alignment, Layout } from "@rive-app/canvas";
+import Prova from "../components/content/prova.vue";
 
 const PhasesRef = ref(null);
 const canvasRef = ref(null);
