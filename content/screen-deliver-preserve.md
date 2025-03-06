@@ -1,7 +1,7 @@
 ---
 title: mnemonica modules section
 description: mnemonica modules used in production and archive
-mino: gino lino pino
+subtitle: mnemonica subtitle
 ---
 
 ::screen

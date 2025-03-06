@@ -8,8 +8,7 @@ export default defineContentConfig({
       schema: z.object ({
         title: z.string(),
         description: z.string(),
-        //body: z.string(),
-        mino: z.string(),
+        subtitle: z.string(),
       })
     }),
     contentJson: defineCollection({
