@@ -3,36 +3,17 @@ title: mnemonica modules section
 description: mnemonica modules used in production and archive
 ---
 
-## Schermata principale
-
-Benvenuto su Mnemonica!
-
-::screen
----
-id: screen
----
+::slot name="screen"
 # Screen
-
-#Descrizione
-Streaming e discussion
+Streaming e discussione
 ::
 
-::deliver{#deliver}
-# Titolo
-
-Deliver
-
-# Descrizione
-
+::slot name="deliver"
+# Deliver
 Trasferimento dati
 ::
 
-::preserve{#preserve}
-# Titolo
-
-Preserve
-
-# Descrizione
-
+::slot name="preserve"
+# Preserve
 Disponibilità perpetua
 ::

@@ -9,11 +9,7 @@
       <div id="module-txt_1" class="module_card">
         <!-- <h2 class="mTitle">Screening Rooms</h2> -->
         <h2 class="mTitle">Screen</h2>
-        <h3>{{ doc.name }}</h3>
-        <h3>{{ doc.url }}</h3>
-        <h3>{{ doc.avatar }}</h3>
-        <h3>{{ doc.description }}</h3>
-        <h3>{{ doc.subtitle }}</h3>
+        <ContentRenderer :value="doc"><template #screen /></ContentRenderer>
         <h3 class="mSubTitle">streaming and discussion</h3>
         <button
           @click.passive="openModal1"
@@ -64,11 +60,11 @@ import { _zIndex } from "#tailwind-config/theme";
 import { nextTick } from "vue";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-//richiamo i testi dei moduli
+//richiamo i testi dei moduli con nuxt content
 const { data: doc } = await useAsyncData(() =>
-  queryCollection("contentJson").path("/test").first()
+  queryCollection("content").path("/screen-deliver-preserve").first()
 );
-console.log(doc);
+
 // mipreparo le istanze dei modali
 const isModalOpen1 = ref(false);
 const isModalOpen2 = ref(false);
