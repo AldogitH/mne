@@ -1,29 +1,40 @@
 ---
-title: mnemonica modules section
-description: mnemonica modules used in production and archive
-subtitle: mnemonica subtitle
+title: "mnemonica modules section"
+description: "mnemonica modules used in production and archive"
 ---
 
+## Schermata principale
+Benvenuto su Mnemonica!
+
 ::screen
-#title
+---
+id: "screen"
+---
+# Titolo
 Screen
 
-#description
-streaming and discussion
+# Descrizione
+Streaming e discussione
 ::
 
 ::deliver
-#title
+---
+id: "deliver"
+---
+# Titolo
 Deliver
 
-#description
-data transfer
+# Descrizione
+Trasferimento dati
 ::
 
 ::preserve
-#title
+---
+id: "preserve"
+---
+# Titolo
 Preserve
 
-#description
-perennial availability
+# Descrizione
+Disponibilità perpetua
 ::
