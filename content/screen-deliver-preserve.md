@@ -37,12 +37,3 @@ Preserve
 #description
 perennial availability
 ::
-
-\#title-screen: ciao
-
-\#description-screen: ciaci ciaoc ciaoco
-
-{
-title: "screen title",
-description: "decription screen"
-}
