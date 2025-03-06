@@ -4,7 +4,7 @@ description: mnemonica modules used in production and archive
 mino: gino lino pino
 ---
 
-::screen
+:: screen
 ---
 module: modules
 submodule: screen
@@ -16,7 +16,7 @@ Screen
 streaming and discussion
 ::
 
-::deliver
+:: deliver
 ---
 modulo: deliver
 ---
@@ -27,7 +27,7 @@ Deliver
 data transfer
 ::
 
-::preserve
+:: preserve
 ---
 modulo: preserve
 ---
