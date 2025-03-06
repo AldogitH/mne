@@ -16,7 +16,11 @@ export default defineContentConfig({
       type: 'page',
       source: '**/*.json',
       schema: z.object ({
-        name: z.string()
+        name: z.string(),
+        description: z.string(),
+        url: z.string().url(),
+        avatar: z.string(),
+        subtitle: z.string(),
       })
     })
   }

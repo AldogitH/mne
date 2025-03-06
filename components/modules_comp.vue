@@ -9,7 +9,11 @@
       <div id="module-txt_1" class="module_card">
         <!-- <h2 class="mTitle">Screening Rooms</h2> -->
         <h2 class="mTitle">Screen</h2>
-        <h1>{{ doc.name }}</h1>
+        <h3>{{ doc.name }}</h3>
+        <h3>{{ doc.url }}</h3>
+        <h3>{{ doc.avatar }}</h3>
+        <h3>{{ doc.description }}</h3>
+        <h3>{{ doc.subtitle }}</h3>
         <h3 class="mSubTitle">streaming and discussion</h3>
         <button
           @click.passive="openModal1"
