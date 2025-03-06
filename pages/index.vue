@@ -44,7 +44,7 @@
         <PhasesComp ref="PhasesRef"></PhasesComp>
       </div>
       <div id="modules-section" class="section_fixed modules">
-        <ModulesComp></ModulesComp>
+        <ModulesComponents />
       </div>
     </div>
     <div class="nofixed_section w-[100vw] h-[1600px] z-30">

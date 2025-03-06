@@ -3,17 +3,22 @@ title: mnemonica modules section
 description: mnemonica modules used in production and archive
 ---
 
-::slot name="screen"
-# Screen
+::modulescomponents
+#titleScreen
+Screen
+
+#descriptionScreen
 Streaming e discussione
-::
 
-::slot name="deliver"
-# Deliver
+#titleDeliver
+Deliver
+
+#descriptionDeliver
 Trasferimento dati
-::
 
-::slot name="preserve"
-# Preserve
+#titlePreserve
+Preserve
+
+#descriptionPreserve
 Disponibilità perpetua
 ::

@@ -9,7 +9,7 @@
       <div id="module-txt_1" class="module_card">
         <!-- <h2 class="mTitle">Screening Rooms</h2> -->
         <h2 class="mTitle">Screen</h2>
-        <slot name="titleScreen"></slot>
+        <slot name="titleScreen" />
         <h3 class="mSubTitle">streaming and discussion</h3>
         <button
           @click.passive="openModal1"
