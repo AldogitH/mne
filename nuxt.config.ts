@@ -41,6 +41,9 @@ export default defineNuxtConfig({
 
   content: {
     // Add your content module options here if needed
+    preview: {
+      api: 'https://api.nuxt.studio'
+    }
   },
   
 
