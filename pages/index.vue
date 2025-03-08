@@ -32,10 +32,6 @@
                 Let your media assets flourish<br />
                 and last in the digital cinema ecosystem
               </h2>
-              <h2>{{ doc.title }}</h2>
-              <h3>{{ doc.description }}</h3>
-              <h3>{{ doc.mino }}</h3>
-              <ContentRenderer :value="doc" />
             </div>
           </div>
         </div>
@@ -44,7 +40,6 @@
         <PhasesComp ref="PhasesRef"></PhasesComp>
       </div>
       <div id="modules-section" class="section_fixed modules">
-        <ContentRenderer :value="prov" />
         <ModulesComp></ModulesComp>
       </div>
     </div>
@@ -58,19 +53,15 @@
 </template>
 
 <script setup>
-// const { data: post } = await useAsyncData("post", async () => {
-//   queryContent("test-contenuti").findOne();
-// });
-const { data: doc } = await useAsyncData(() =>
-  queryCollection("content").path("/test-contenuti").first()
-);
-const { data: prov } = await useAsyncData(() =>
-  queryCollection("content").path("/testiprova").first()
-);
+// const { data: doc } = await useAsyncData(() =>
+//   queryCollection("content").path("/test-contenuti").first()
+// );
+// const { data: prov } = await useAsyncData(() =>
+//   queryCollection("content").path("/testiprova").first()
+// );
 import { onMounted, onBeforeUnmount, ref, nextTick } from "vue";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Rive, Fit, Alignment, Layout } from "@rive-app/canvas";
-import Prova from "../components/content/prova.vue";
 
 const PhasesRef = ref(null);
 const canvasRef = ref(null);
