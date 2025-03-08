@@ -1,3 +1,4 @@
+import { defineNuxtConfig } from 'nuxt/config'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
@@ -39,16 +40,19 @@ export default defineNuxtConfig({
 
   modules: ["@nuxt/ui", '@nuxtjs/apollo', '@nuxt/fonts', '@nuxt/image', '@vueuse/nuxt', '@nuxt/content'],
 
-  content: {
+ 
+ content: {
     // Add your content module options here if needed
     preview: {
       api: 'https://api.nuxt.studio',
       dev: true
     }
   },
+
+  
   
   components:[
-{path: '~/components/content', pathPrefix: false}
+  {path: '~/components/content', pathPrefix: false}
   ],
 
   apollo: {
